@@ -9,18 +9,11 @@ for [DataSift's HubFlow branching model](http://datasift.github.com/gitflow/), w
 Installation
 ------------
 
-1. `git clone git@github.com/datasift/gitflow.git`
-2. `cd gitflow`
-3. `sudo ./install.sh`
+1. `git clone git@github.com/TargetProcess/gitflow.git`
+2. `cd gitflow\contrib`
+3. `msysgit-install.cmd`
 
 Windows users will need something like Cygwin in order to use this extension.
-
-Upgrading To The Latest Version
--------------------------------
-
-Upgrading to the latest version of the HubFlow tools is very easy:
-
-1. `sudo git hf upgrade`
 
 Getting Started
 ---------------
