@@ -1,4 +1,4 @@
-@echo off
+echo off
 setlocal
 if not "%~1"=="" set GIT_HOME=%~f1
 if "%GIT_HOME%"=="" call :FindGitHome "git.cmd"
@@ -38,7 +38,7 @@ if errorlevel 4 if not errorlevel 5 goto :AccessDenied
 if errorlevel 1 set ERR=1
 xcopy "%~dp0\..\git-hf*"           "%GIT_HOME%\bin"                 /Y /R /F || set ERR=1
 xcopy "%~dp0\..\hubflow-*"           "%GIT_HOME%\bin"                 /Y /R /F || set ERR=1
-xcopy "%~dp0\..\shFlags\src\shflags" "%GIT_HOME%\bin\gitflow-shFlags" /Y /R /F || set ERR=1
+xcopy "%~dp0\..\shFlags\src\shflags" "%GIT_HOME%\bin\hubflow-shFlags" /Y /R /F || set ERR=1
 
 xcopy "%~dp0\getopt.exe"            "%GIT_HOME%\bin"                 /Y /R /F
 xcopy "%~dp0\libintl3.dll"            "%GIT_HOME%\bin"                 /Y /R /F
