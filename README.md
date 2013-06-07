@@ -11,9 +11,9 @@ Installation
 Execute these lines outside TP trunk!
 
 
-    git clone git@github.com/TargetProcess/gitflow.git
+    git clone https://github.com/TargetProcess/gitflow.git --recursive
     cd gitflow\contrib
-    msysgit-install.cmd
+    msysgit-install.cmd "c:\Program Files (x86)\Git"
 
 
 Goto your trunk and execute following lines:
