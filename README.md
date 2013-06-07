@@ -8,7 +8,7 @@ for [DataSift's HubFlow branching model](http://datasift.github.com/gitflow/), w
 
 Installation
 ------------
-Execute these lines outside TP trunk!
+Execute these lines *outside TP trunk* using CMD.exe. Your Git.ext should be added to path!
 
 
     git clone https://github.com/TargetProcess/gitflow.git --recursive
@@ -18,10 +18,13 @@ Execute these lines outside TP trunk!
 
 Goto your trunk and execute following lines:
 
-    git branch develop
+    git fetch
+    git checkout -B develop origin/develop
     git hf init
+    
+    
 
-
+`git hf init` could fail on uploading - it is ok.
 And now you can use git flow from console.
 
 
