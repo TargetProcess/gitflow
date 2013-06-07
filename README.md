@@ -13,7 +13,17 @@ Installation
 2. `cd gitflow\contrib`
 3. `msysgit-install.cmd`
 
-Windows users will need something like Cygwin in order to use this extension.
+
+Goto your trunk and execute following lines:
+
+`git stash -u`
+`git checkout master`
+`git branch develop`
+`git hf init`
+
+
+And now you can use git flow from console.
+
 
 Getting Started
 ---------------
