@@ -16,10 +16,6 @@ set ERR=0
 
 echo Installing gitflow into "%GIT_HOME%"...
 
-call :ChkGetopt getopt.exe || set ERR=1
-if %ERR%==1 goto :End
-echo getopt.exe... Found
-
 if not exist "%GIT_HOME%\bin\git-hf" goto :Install
 echo GitFlow is already installed.>&2
 set /p mychoice="Do you want to replace it [y/n]"
