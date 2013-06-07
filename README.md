@@ -8,18 +8,20 @@ for [DataSift's HubFlow branching model](http://datasift.github.com/gitflow/), w
 
 Installation
 ------------
+Execute these lines outside TP trunk!
 
-1. `git clone git@github.com/TargetProcess/gitflow.git`
-2. `cd gitflow\contrib`
-3. `msysgit-install.cmd`
+
+    git clone git@github.com/TargetProcess/gitflow.git
+    cd gitflow\contrib
+    msysgit-install.cmd
 
 
 Goto your trunk and execute following lines:
 
-`git stash -u`
-`git checkout master`
-`git branch develop`
-`git hf init`
+    git stash -u
+    git checkout master
+    git branch develop
+    git hf init
 
 
 And now you can use git flow from console.
