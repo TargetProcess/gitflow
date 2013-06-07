@@ -18,8 +18,6 @@ Execute these lines outside TP trunk!
 
 Goto your trunk and execute following lines:
 
-    git stash -u
-    git checkout master
     git branch develop
     git hf init
 
