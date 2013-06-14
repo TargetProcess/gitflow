@@ -1,4 +1,4 @@
-@echo off
+echo off
 setlocal
 if not "%~1"=="" set GIT_HOME=%~f1
 if "%GIT_HOME%"=="" call :FindGitHome "git.cmd"
@@ -16,11 +16,7 @@ set ERR=0
 
 echo Installing gitflow into "%GIT_HOME%"...
 
-call :ChkGetopt getopt.exe || set ERR=1
-if %ERR%==1 goto :End
-echo getopt.exe... Found
-
-if not exist "%GIT_HOME%\bin\git-flow" goto :Install
+if not exist "%GIT_HOME%\bin\git-hf" goto :Install
 echo GitFlow is already installed.>&2
 set /p mychoice="Do you want to replace it [y/n]"
 if "%mychoice%"=="y" goto :DeleteOldFiles
@@ -28,17 +24,21 @@ goto :Abort
 
 :DeleteOldFiles
 echo Deleting old files...
-for /F %%i in ("%GIT_HOME%\git-flow*" "%GIT_HOME%\gitflow-*") do if exist "%%~fi" del /F /Q "%%~fi"
+for /F %%i in ("%GIT_HOME%\git-hf*" "%GIT_HOME%\hubflow-*") do if exist "%%~fi" del /F /Q "%%~fi"
 
 :Install
 echo Copying files...
 ::goto :EOF
-xcopy "%~dp0\..\git-flow"            "%GIT_HOME%\bin"                 /Y /R /F
+xcopy "%~dp0\..\git-hf"            "%GIT_HOME%\bin"                 /Y /R /F
 if errorlevel 4 if not errorlevel 5 goto :AccessDenied
 if errorlevel 1 set ERR=1
-xcopy "%~dp0\..\git-flow*"           "%GIT_HOME%\bin"                 /Y /R /F || set ERR=1
-xcopy "%~dp0\..\gitflow-*"           "%GIT_HOME%\bin"                 /Y /R /F || set ERR=1
-xcopy "%~dp0\..\shFlags\src\shflags" "%GIT_HOME%\bin\gitflow-shFlags" /Y /R /F || set ERR=1
+xcopy "%~dp0\..\git-hf*"           "%GIT_HOME%\bin"                 /Y /R /F || set ERR=1
+xcopy "%~dp0\..\hubflow-*"           "%GIT_HOME%\bin"                 /Y /R /F || set ERR=1
+xcopy "%~dp0\..\shFlags\src\shflags" "%GIT_HOME%\bin\hubflow-shFlags" /Y /R /F || set ERR=1
+
+xcopy "%~dp0\getopt.exe"            "%GIT_HOME%\bin"                 /Y /R /F
+xcopy "%~dp0\libintl3.dll"            "%GIT_HOME%\bin"                 /Y /R /F
+
 
 if %ERR%==1 choice /T 30 /C Y /D Y /M "Some unexpected errors happened. Sorry, you'll have to fix them by yourself."
 
@@ -64,8 +64,7 @@ goto :End
 :: %1 is getopt.exe
 if exist "%GIT_HOME%\bin\%1" goto :EOF
 if exist "%~f$PATH:1" goto :EOF
-echo %GIT_HOME%\bin\%1 not found.>&2
-echo You have to install this file manually. See the GitFlow README.
+
 exit /B 1
 
 :FindGitHome

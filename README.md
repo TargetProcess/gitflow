@@ -8,19 +8,25 @@ for [DataSift's HubFlow branching model](http://datasift.github.com/gitflow/), w
 
 Installation
 ------------
+Execute these lines *outside TP trunk* using CMD.exe. Your Git.ext should be added to path!
 
-1. `git clone git@github.com/datasift/gitflow.git`
-2. `cd gitflow`
-3. `sudo ./install.sh`
 
-Windows users will need something like Cygwin in order to use this extension.
+    git clone https://github.com/TargetProcess/gitflow.git --recursive
+    cd gitflow\contrib
+    msysgit-install.cmd "c:\Program Files (x86)\Git"
 
-Upgrading To The Latest Version
--------------------------------
 
-Upgrading to the latest version of the HubFlow tools is very easy:
+Goto your trunk and execute following lines:
 
-1. `sudo git hf upgrade`
+    git fetch
+    git checkout -B develop origin/develop
+    git hf init
+    
+    
+
+`git hf init` could fail on uploading - it is ok.
+And now you can use git flow from console.
+
 
 Getting Started
 ---------------
