@@ -266,6 +266,10 @@ cmd_finish() {
 		require_branches_equal "$DEVELOP_BRANCH" "$ORIGIN/$DEVELOP_BRANCH"
 	fi
 
+	if has "$ORIGIN/$BRANCH" $(git_remote_branches); then
+		require_branches_equal "$BRANCH" "$ORIGIN/$BRANCH"
+	fi
+
 	# try to merge into master
 	# in case a previous attempt to finish this release branch has failed,
 	# but the merge into master was successful, we skip it now
