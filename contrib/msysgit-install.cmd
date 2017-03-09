@@ -24,20 +24,18 @@ goto :Abort
 
 :DeleteOldFiles
 echo Deleting old files...
-for /F %%i in ("%GIT_HOME%\git-hf*" "%GIT_HOME%\hubflow-*") do if exist "%%~fi" del /F /Q "%%~fi"
+for /F %%i in ("%GIT_HOME%\bin\git-hf*" "%GIT_HOME%\bin\hubflow-*") do if exist "%%~fi" del /F /Q "%%~fi"
+for /F %%i in ("%GIT_HOME%\usr\bin\git-hf*" "%GIT_HOME%\usr\bin\hubflow-*") do if exist "%%~fi" del /F /Q "%%~fi"
 
 :Install
 echo Copying files...
 ::goto :EOF
-xcopy "%~dp0\..\git-hf"            "%GIT_HOME%\bin"                 /Y /R /F
+xcopy "%~dp0\..\git-hf"            "%GIT_HOME%\usr\bin"                 /Y /R /F
 if errorlevel 4 if not errorlevel 5 goto :AccessDenied
 if errorlevel 1 set ERR=1
-xcopy "%~dp0\..\git-hf*"           "%GIT_HOME%\bin"                 /Y /R /F || set ERR=1
-xcopy "%~dp0\..\hubflow-*"           "%GIT_HOME%\bin"                 /Y /R /F || set ERR=1
-xcopy "%~dp0\..\shFlags\src\shflags" "%GIT_HOME%\bin\hubflow-shFlags" /Y /R /F || set ERR=1
-
-xcopy "%~dp0\getopt.exe"            "%GIT_HOME%\bin"                 /Y /R /F
-xcopy "%~dp0\libintl3.dll"            "%GIT_HOME%\bin"                 /Y /R /F
+xcopy "%~dp0\..\git-hf*"           "%GIT_HOME%\usr\bin"                 /Y /R /F || set ERR=1
+xcopy "%~dp0\..\hubflow-*"           "%GIT_HOME%\usr\bin"                 /Y /R /F || set ERR=1
+xcopy "%~dp0\..\shFlags\src\shflags" "%GIT_HOME%\usr\bin\hubflow-shFlags" /Y /R /F || set ERR=1
 
 
 if %ERR%==1 choice /T 30 /C Y /D Y /M "Some unexpected errors happened. Sorry, you'll have to fix them by yourself."
@@ -62,7 +60,7 @@ goto :End
 
 :ChkGetopt
 :: %1 is getopt.exe
-if exist "%GIT_HOME%\bin\%1" goto :EOF
+if exist "%GIT_HOME%\usr\bin\%1" goto :EOF
 if exist "%~f$PATH:1" goto :EOF
 
 exit /B 1
